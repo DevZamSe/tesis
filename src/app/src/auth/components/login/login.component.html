@@ -1,0 +1,50 @@
+<body>
+  <div class="first">
+    <h1>Bienvenido de vuelta</h1>
+    <div class="flow"></div>
+    <h3>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tortor mi,
+      posuere sed ornare ut, vulputate vitae leo. Etiam blandit turpis vitae
+      metus interdum, vitae vulputate ipsum molestie. Curabitur accumsan, nulla
+      a pulvinar ultricies, elit eros iaculis neque, eget sodales metus urna et
+      quam.
+    </h3>
+  </div>
+  <div class="second">
+    <img src="assets/img/logo.png" alt="logo" />
+
+    <form>
+      <h1>Iniciar sesión</h1>
+
+      <mat-form-field class="example-full-width">
+        <mat-label> Usuario </mat-label>
+        <input
+          type="text"
+          [(ngModel)]="data.username"
+          name="username"
+          [ngModelOptions]="{ standalone: true }"
+          matInput
+          placeholder="Usuario"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label> Contraseña </mat-label>
+        <input
+          type="password"
+          [(ngModel)]="data.password"
+          name="password"
+          [ngModelOptions]="{ standalone: true }"
+          matInput
+          placeholder="Contraseña"
+        />
+      </mat-form-field>
+
+      <h4>¿Olvidaste tu contraseña?</h4>
+
+      <button mat-flat-button color="primary" (click)="enviar()">
+        Iniciar sesión
+      </button>
+    </form>
+  </div>
+</body>
