@@ -5,7 +5,7 @@ body {
   flex-direction: row;
 
   .first {
-    width: 40%;
+    width: 42%;
     height: 100vh;
     padding-left: 3.5rem;
     padding-right: 6rem;
@@ -35,7 +35,7 @@ body {
   }
 
   .second {
-    width: 60%;
+    width: 50%;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -75,5 +75,16 @@ body {
         font-family: "Ubuntu", sans-serif;
       }
     }
+  }
+}
+
+@media only screen and (max-width: 980px) and (min-width: 1px) {
+  .first {
+    display: none !important;
+  }
+
+  .second {
+    margin-left: 5vw;
+    width: 90vw !important;
   }
 }

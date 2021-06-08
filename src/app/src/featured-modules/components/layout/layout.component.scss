@@ -1,1 +1,40 @@
+span {
+  font-family: "Ubuntu", sans-serif;
+}
 
+::ng-deep mat-drawer-container {
+  height: 92.5vh;
+
+  ::ng-deep mat-drawer {
+    padding-top: 1rem;
+
+    section {
+      height: 4rem;
+      display: flex;
+      padding-left: 3rem;
+      padding-right: 3.5rem;
+      align-items: center;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  }
+}
+
+// /* active tab */
+// ::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+//   //   color: red;
+//   //   background-color: green;
+//   font-family: "Ubuntu", sans-serif;
+//   font-weight: 700;
+// }
+
+// /* ink bar */
+// ::ng-deep .mat-ink-bar {
+//   font-family: "Ubuntu", sans-serif;
+//   //   background-color: var(--primary-color, #1f89ce) !important;
+// }
+
+// ::ng-deep .mat-tab-label-content {
+//   font-family: "Ubuntu", sans-serif !important;
+// }

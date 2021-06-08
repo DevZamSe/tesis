@@ -1,30 +1,25 @@
 <mat-toolbar color="primary">
-  <span>Tesis</span>
+  <button (click)="drawer.toggle()" mat-icon-button>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Laboratorio de Células Madres</span>
 </mat-toolbar>
 
-<mat-tab-group mat-align-tabs="center">
-  <mat-tab label="Inicio">
-    <app-home></app-home>
-  </mat-tab>
-  <mat-tab label="Usuarios">
-    <app-usuarios></app-usuarios>
-  </mat-tab>
-  <mat-tab label="Clientes">
-    <app-clientes></app-clientes>
-  </mat-tab>
-  <mat-tab label="Ventas">
-    <app-ventas></app-ventas>
-  </mat-tab>
-  <mat-tab label="Predicción">
-    <app-prediccion></app-prediccion>
-  </mat-tab>
-  <mat-tab label="Reportes">
-    <app-reportes></app-reportes>
-  </mat-tab>
-  <mat-tab label="Ordenes de compra">
-    <app-ordencompra></app-ordencompra>
-  </mat-tab>
-  <mat-tab label="Inventario">
-    <app-inventario></app-inventario>
-  </mat-tab>
-</mat-tab-group>
+<mat-drawer-container>
+  <mat-drawer #drawer mode="side">
+    <section *ngFor="let i of data">
+      <div (click)="nowClick(i.id)">{{ i.name }}</div>
+    </section>
+  </mat-drawer>
+
+  <div [ngSwitch]="now">
+    <div *ngSwitchCase="0"><app-home></app-home></div>
+    <div *ngSwitchCase="1"><app-usuarios></app-usuarios></div>
+    <div *ngSwitchCase="2"><app-clientes></app-clientes></div>
+    <div *ngSwitchCase="3"><app-ventas></app-ventas></div>
+    <div *ngSwitchCase="4"><app-prediccion></app-prediccion></div>
+    <div *ngSwitchCase="5"><app-reportes></app-reportes></div>
+    <div *ngSwitchCase="6"><app-ordencompra></app-ordencompra></div>
+    <div *ngSwitchCase="7"><app-inventario></app-inventario></div>
+  </div>
+</mat-drawer-container>

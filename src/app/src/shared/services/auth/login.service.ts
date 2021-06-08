@@ -19,7 +19,7 @@ export class LoginService {
   constructor(private http: HttpClient) {}
 
   login(datos: authLogin) {
-    let url_api = `${environment.url}/poliza/consultar-certificado`;
+    let url_api = `${environment.url}/api/v1/users/login`;
 
     return this.http
       .post(url_api, datos, {
@@ -27,4 +27,8 @@ export class LoginService {
       })
       .pipe(map((data) => data));
   }
+
+  // onSave(data: responseLogin){
+  //   localStorage.setItem("")
+  // }
 }
