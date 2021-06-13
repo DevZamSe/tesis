@@ -14,6 +14,7 @@ export class LoginService {
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Access-Control-Allow-Credentials': 'true',
     'Access-Control-Allow-Origin': '*',
+    // token: 'jdkasjdlakjdlasd###',
   });
 
   constructor(private http: HttpClient) {}
@@ -25,6 +26,14 @@ export class LoginService {
       .post(url_api, datos, {
         headers: this.headers,
       })
+      .pipe(map((data) => data));
+  }
+
+  listUser() {
+    let url_api = `${environment.url}/api/v1/users/list`;
+
+    return this.http
+      .post(url_api, { headers: this.headers })
       .pipe(map((data) => data));
   }
 
