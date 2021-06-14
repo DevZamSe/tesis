@@ -12,9 +12,21 @@ import { ReportesComponent } from './components/reportes/reportes.component';
 import { InventarioComponent } from './components/inventario/inventario.component';
 import { OrdencompraComponent } from './components/ordencompra/ordencompra.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { RandomColorPipe } from '../shared/pipes/randomColor/random-color.pipe';
 
 @NgModule({
-  declarations: [LayoutComponent, HomeComponent, ClientesComponent, VentasComponent, PrediccionComponent, ReportesComponent, InventarioComponent, OrdencompraComponent, UsuariosComponent],
+  declarations: [
+    LayoutComponent,
+    HomeComponent,
+    ClientesComponent,
+    VentasComponent,
+    PrediccionComponent,
+    ReportesComponent,
+    InventarioComponent,
+    OrdencompraComponent,
+    UsuariosComponent,
+    RandomColorPipe,
+  ],
   imports: [CommonModule, FeaturedModulesRoutingModule, MaterialModule],
 })
 export class FeaturedModulesModule {}
