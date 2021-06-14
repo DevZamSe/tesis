@@ -4,17 +4,20 @@
       <button mat-raised-button>Listar Predicciones</button>
       <button mat-raised-button color="accent">Exportar Datos</button>
     </div>
-    <mat-form-field>
-      <mat-label>Filter</mat-label>
-      <input
-        matInput
-        (keyup)="applyFilter()"
-        [(ngModel)]="nameFilter"
-        placeholder="Filtrar"
-        #input
-      />
-    </mat-form-field>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <div class="filter">
+      <mat-form-field>
+        <mat-label>Filtrar</mat-label>
+        <input
+          matInput
+          (keyup)="applyFilter()"
+          [(ngModel)]="nameFilter"
+          placeholder="Filtrar"
+          #input
+        />
+      </mat-form-field>
+    </div>
+
+    <table class="mt-12" mat-table [dataSource]="dataSource">
       <ng-container matColumnDef="ID_RESULTADO_MODELO">
         <th mat-header-cell *matHeaderCellDef>ID</th>
         <td mat-cell *matCellDef="let element">

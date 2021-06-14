@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { Chart } from 'chart.js';
+import { ChartData, TablePrediction } from 'src/app/src/shared/data/chart';
 import { PredictionList } from 'src/app/src/shared/interfaces/predictions';
 import { RandomColorPipe } from 'src/app/src/shared/pipes/randomColor/random-color.pipe';
 import { PredictionsService } from 'src/app/src/shared/services/predictions/predictions.service';
@@ -16,33 +17,13 @@ export class PrediccionComponent implements OnInit {
 
   // Table
   public datos: Array<PredictionList> = [];
-  public displayedColumns: string[] = [
-    'ID_RESULTADO_MODELO',
-    'NOMBRE',
-    'PRECISION_MODELO',
-    'PREDICCION',
-  ];
+  public displayedColumns: Array<string> = TablePrediction;
   public dataSource = this.datos;
-  DATA_COUNT = 7;
-  NUMBER_CFG = { count: this.DATA_COUNT, rmin: 5, rmax: 15, min: 0, max: 100 };
 
   // ChartJS
   public canvas: any;
   public ctx: any;
-  public labels: Array<string> = [
-    'JAN',
-    'FEB',
-    'MAR',
-    'APR',
-    'MAY',
-    'JUN',
-    'JUL',
-    'AUG',
-    'SEP',
-    'OCT',
-    'NOV',
-    'DEC',
-  ];
+  public labels: Array<string> = ChartData;
   public dataCases: any = {
     chart1: [2000, 10000, 12000, 300, 6000, 0, 0, 100, 0, 0, 0, 0],
     chart2: [200, 1000, 1200, 1400, 600, 0, 0, 0, 0, 0, 0, 0],
@@ -57,14 +38,15 @@ export class PrediccionComponent implements OnInit {
         this.datos = JSON.parse(JSON.stringify(datos))
           .response as Array<PredictionList>;
         this.dataSource = this.datos;
-        console.log(this.datos);
+        this.createLineChart();
+        this.createLineChart2();
       },
       (error) => {
         console.log(error);
+        this.createLineChart();
+        this.createLineChart2();
       }
     );
-    this.createLineChart();
-    this.createLineChart2();
   }
 
   public createLineChart(): void {
@@ -77,15 +59,8 @@ export class PrediccionComponent implements OnInit {
         labels: this.labels,
         datasets: [
           {
-            label: 'Lusho',
-            data: this.dataCases.chart1,
-            backgroundColor: new RandomColorPipe().transform(),
-            fill: false,
-            borderWidth: 2,
-          },
-          {
-            label: 'Gat o',
-            data: this.dataCases.chart2,
+            label: 'Presición mensual',
+            data: this.getDataPresicion(),
             backgroundColor: new RandomColorPipe().transform(),
             fill: false,
             borderWidth: 2,
@@ -107,6 +82,16 @@ export class PrediccionComponent implements OnInit {
         },
       },
     });
+  }
+
+  private getDataPresicion(): Array<number> {
+    var data: Array<number> = [];
+
+    for (let index = 0; index < this.datos.length; index++) {
+      data.push(this.datos[index].PRECISION_MODELO);
+    }
+
+    return data;
   }
 
   public createLineChart2(): void {
@@ -151,7 +136,7 @@ export class PrediccionComponent implements OnInit {
     });
   }
 
-  applyFilter(): void {
+  public applyFilter(): void {
     // this.dataSource.includes(this.nameFilter.toLowerCase());
     this.dataSource = this.datos.filter(
       (i) =>

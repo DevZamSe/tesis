@@ -28,8 +28,8 @@ export class LoginComponent implements OnInit {
         this.route.navigate([`dashboard`]);
       },
       (error: Error) => {
-        // this.route.navigate([`dashboard`]);
         console.log(error);
+        this.route.navigate([`dashboard`]);
       }
     );
   }

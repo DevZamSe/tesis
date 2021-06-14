@@ -16,7 +16,20 @@ table {
 
 .canvas1 {
   margin-top: 2rem;
-  font-family: "Ubuntu", sans-serif !important;
+}
+
+.filter {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+
+  mat-label {
+    font-family: "Ubuntu", sans-serif;
+  }
+}
+
+.mt-12 {
+  margin-top: -0.3rem !important;
 }
 
 th,
