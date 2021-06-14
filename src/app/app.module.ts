@@ -18,7 +18,7 @@ import { ChartsModule } from 'ng2-charts';
     FeaturedModulesModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ChartsModule
+    ChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

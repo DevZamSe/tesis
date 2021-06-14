@@ -1,3 +1,4 @@
+import { responseLogin } from './../../interfaces/authLogin';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { authLogin } from '../../interfaces/authLogin';
@@ -14,7 +15,6 @@ export class LoginService {
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Access-Control-Allow-Credentials': 'true',
     'Access-Control-Allow-Origin': '*',
-    token: 'jdkasjdlakjdlasd###',
   });
 
   constructor(private http: HttpClient) {}
@@ -37,7 +37,17 @@ export class LoginService {
       .pipe(map((data) => data));
   }
 
-  // onSave(data: responseLogin){
-  //   localStorage.setItem("")
-  // }
+  onSave(data: any) {
+    sessionStorage.setItem('token', data.token);
+  }
+
+  headerSession(): HttpHeaders {
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Credentials': 'true',
+      'Access-Control-Allow-Origin': '*',
+      token: `${sessionStorage.getItem('token')}`,
+    });
+  }
 }

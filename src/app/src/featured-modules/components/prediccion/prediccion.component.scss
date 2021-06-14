@@ -1,15 +1,48 @@
-.container{
-    width: 100%;
-    height: auto;
+.container {
+  width: 100%;
+  height: auto;
 }
-.content{
-    margin: 3rem 4rem ;
+.content {
+  margin: 3rem 4rem;
 }
-.botones{
-    display: flex;
-    justify-content: space-between;
+.botones {
+  display: flex;
+  justify-content: space-between;
 }
-table{
-    margin-top: 3rem;
-    width: 100%;
+table {
+  margin-top: 3rem;
+  width: 100%;
+}
+
+.canvas1 {
+  margin-top: 2rem;
+}
+
+.filter {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+
+  mat-label {
+    font-family: "Ubuntu", sans-serif;
+  }
+}
+
+.mt-12 {
+  margin-top: -0.3rem !important;
+}
+
+th,
+td,
+button,
+mat-paginator {
+  font-family: "Ubuntu", sans-serif;
+}
+
+::ng-deep .mat-paginator-page-size {
+  display: none !important;
+}
+
+::ng-deep .mat-paginator-range-label {
+  display: none !important;
 }
