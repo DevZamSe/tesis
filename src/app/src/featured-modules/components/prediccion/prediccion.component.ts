@@ -137,7 +137,6 @@ export class PrediccionComponent implements OnInit {
   }
 
   public applyFilter(): void {
-    // this.dataSource.includes(this.nameFilter.toLowerCase());
     this.dataSource = this.datos.filter(
       (i) =>
         i.ID_RESULTADO_MODELO.toString().includes(this.nameFilter) ||
