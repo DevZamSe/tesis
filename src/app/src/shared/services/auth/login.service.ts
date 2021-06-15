@@ -33,7 +33,7 @@ export class LoginService {
     let url_api = `${environment.url}/api/v1/users/list`;
 
     return this.http
-      .post(url_api, { headers: this.headers })
+      .post(url_api,{}, { headers: this.headerSession() })
       .pipe(map((data) => data));
   }
 

@@ -13,6 +13,7 @@ import { InventarioComponent } from './components/inventario/inventario.componen
 import { OrdencompraComponent } from './components/ordencompra/ordencompra.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { RandomColorPipe } from '../shared/pipes/randomColor/random-color.pipe';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { RandomColorPipe } from '../shared/pipes/randomColor/random-color.pipe';
     OrdencompraComponent,
     UsuariosComponent,
     RandomColorPipe,
+    
   ],
-  imports: [CommonModule, FeaturedModulesRoutingModule, MaterialModule],
+  imports: [CommonModule, FeaturedModulesRoutingModule, MaterialModule,FormsModule, ReactiveFormsModule],
 })
 export class FeaturedModulesModule {}

@@ -1,5 +1,5 @@
 import { ResponseClient } from './../../../shared/interfaces/client';
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import {  Component, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -7,6 +7,9 @@ import { authLogin } from 'src/app/src/shared/interfaces/authLogin';
 import { ListClient } from 'src/app/src/shared/interfaces/client';
 import { LoginService } from 'src/app/src/shared/services/auth/login.service';
 import { DateAdapter } from '@angular/material/core';
+import { UsuariosService } from './../../../shared/services/usuarios/usuarios.service';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 /** Constants used to fill up our data base. */
 // const FRUITS: string[] = [
@@ -47,44 +50,84 @@ import { DateAdapter } from '@angular/material/core';
   styleUrls: ['./usuarios.component.scss'],
 })
 export class UsuariosComponent implements OnInit {
+  hide = true;
+  public nameFilter!: string;
+  userForm= new FormGroup({
+    username:new FormControl(''),
+    password:new FormControl(''),
+  nombre:new FormControl(''),
+  apellido:new FormControl(''),
+  userType:new FormControl(''),
+
+  });
+
   public displayedColumns: string[] = [
     'ID',
     'Nombre',
     'Apellido',
     'Fecha de Creación',
+    'Opcions'
   ];
-  public dataSource!: MatTableDataSource<ListClient>;
-  public data: Array<ResponseClient> = [];
+  public datos: Array<ResponseClient> = [];
+  public dataSource =this.datos;
+ 
 
   public paginator!: MatPaginator;
   public sort!: MatSort;
-
-  constructor(private authService: LoginService) {}
+  
+  constructor(private authService: LoginService,
+    private usuariosService:UsuariosService,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    ) {}
 
   ngOnInit(): void {
     this.getData();
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    // this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
   }
+  token:string ="jdkasjdlakjdlasd###";
 
-  getData(): void {
-    this.authService.listUser().subscribe(
-      (data) => {
-        // this.data = data['response'];
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+  getData(){
+   this.authService.listUser().subscribe((datos)=>{
+    console.log(datos);
+    this.datos = JSON.parse(JSON.stringify(datos))
+          .response as Array<ResponseClient>;
+    this.dataSource=this.datos;
+   })
   }
-
-  applyFilter(event: Event): void {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
+  saveUser(event: Event) {
+    event.preventDefault();
+    if (this.userForm.valid) {
+      const user = this.userForm.value;
+      console.log(user);
+      
+      this.usuariosService.createUser(user)
+      .subscribe((response) => {
+        console.log(response);
+        // this.router.navigate(['./admin/products']);
+      });
     }
+  }
+  // private buildForm() {
+  //   this.userForm = this.formBuilder.group({
+  //     id: ['', [Validators.required]],
+  //     title: ['', [Validators.required]],
+  //     price: [0],
+  //     image: [''],
+  //     description: ['', [Validators.required]],
+  //   });
+  // }
+
+  public applyFilter(): void {
+    // this.dataSource.includes(this.nameFilter.toLowerCase());
+    this.dataSource = this.datos.filter(
+      (i) =>
+        i.ID_USUARIO.toString().includes(this.nameFilter) ||
+        i.NOMBRE.toLowerCase().includes(this.nameFilter) ||
+        i.APELLIDO.toString().includes(this.nameFilter) ||
+        i.FECHA_CREACION.toString().includes(this.nameFilter)
+    );
   }
 
   createNewUser(id: number): ResponseClient {
