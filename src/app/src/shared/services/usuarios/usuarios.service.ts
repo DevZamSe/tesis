@@ -16,10 +16,17 @@ export class UsuariosService {
   ) { }
 
   ListarUsuarios(token:string){
-    return this.http.post(`${environment.url}/api/v1/users/list`,token);
+    return this.http.post(`${environment.url}/api/v1/users/list`,{},{
+      headers: this.authSession.headerSession(),
+    });
   }
   createUser(data:any){
     return this.http.post(`${environment.url}/api/v1/users/add`,data,{
+      headers: this.authSession.headerSession(),
+    });
+  }
+  deleteUser(data:any){
+    return this.http.post(`${environment.url}/api/v1/users/delete`,data,{
       headers: this.authSession.headerSession(),
     });
   }

@@ -12,6 +12,7 @@ import { ReportesComponent } from './components/reportes/reportes.component';
 import { InventarioComponent } from './components/inventario/inventario.component';
 import { OrdencompraComponent } from './components/ordencompra/ordencompra.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { ModalUsuarioEditComponent } from './components/modals/modal-usuario-edit/modal-usuario-edit.component';
 import { RandomColorPipe } from '../shared/pipes/randomColor/random-color.pipe';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
@@ -27,6 +28,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
     OrdencompraComponent,
     UsuariosComponent,
     RandomColorPipe,
+    ModalUsuarioEditComponent
     
   ],
   imports: [CommonModule, FeaturedModulesRoutingModule, MaterialModule,FormsModule, ReactiveFormsModule],

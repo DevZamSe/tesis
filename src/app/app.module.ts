@@ -9,6 +9,10 @@ import { FeaturedModulesModule } from './src/featured-modules/featured-modules.m
 import { HttpClientModule } from '@angular/common/http';
 import { ChartsModule } from 'ng2-charts';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatDialogModule} from '@angular/material/dialog';
+
+
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -19,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     HttpClientModule,
     ChartsModule,
+    MatDialogModule,
     FormsModule, ReactiveFormsModule
   ],
   providers: [],

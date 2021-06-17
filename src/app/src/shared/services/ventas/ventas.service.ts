@@ -25,13 +25,16 @@ export class VentasService {
   }
 
   add(data: any) {
-    let url_api = `${environment.url}/api/v1/sales/add`;
+    // let url_api = `${environment.url}/api/v1/sales/add`;
 
-    return this.http
-      .post(url_api, data, {
-        headers: this.authSession.headerSession(),
-      })
-      .pipe(map((data) => data));
+    // return this.http
+    //   .post(url_api, data, {
+    //     headers: this.authSession.headerSession(),
+    //   })
+    //   .pipe(map((data) => data));
+    return this.http.post(`${environment.url}/api/v1/sales/add`,data,{
+      headers: this.authSession.headerSession(),
+    });
   }
 
   delete(data: any) {
