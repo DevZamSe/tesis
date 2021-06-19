@@ -29,7 +29,8 @@ export class LoginComponent implements OnInit {
       },
       (error: Error) => {
         console.log(error);
-        this.route.navigate([`dashboard`]);
+        // this.route.navigate([``]);
+        window.location.reload;
       }
     );
   }

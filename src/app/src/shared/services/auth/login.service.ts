@@ -33,7 +33,7 @@ export class LoginService {
     let url_api = `${environment.url}/api/v1/users/list`;
 
     return this.http
-      .post(url_api,{}, { headers: this.headerSession() })
+      .post(url_api, {}, { headers: this.headerSession() })
       .pipe(map((data) => data));
   }
 
@@ -49,5 +49,17 @@ export class LoginService {
       'Access-Control-Allow-Origin': '*',
       token: `${sessionStorage.getItem('token')}`,
     });
+  }
+
+  isLogged(): boolean {
+    let token = `${sessionStorage.getItem('token')}`.toString();
+    if (token == '' || token == 'null') {
+      return false;
+    }
+    return true;
+  }
+
+  logout(): void {
+    sessionStorage.removeItem('token');
   }
 }

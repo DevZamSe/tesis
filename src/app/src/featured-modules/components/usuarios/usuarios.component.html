@@ -1,8 +1,7 @@
 <div class="container">
   <div class="content">
     <div class="botones">
-     
-      <button mat-raised-button >Exportar Datos</button>
+      <button mat-raised-button>Exportar Datos</button>
     </div>
     <div class="formulario">
       <form [formGroup]="userForm" (ngSubmit)="saveUser($event)">
@@ -11,45 +10,72 @@
             <mat-card-title>Agregar Usuario</mat-card-title>
           </mat-card-header>
           <mat-card-content class="Formcontent">
-           
-                <mat-form-field appearance="fill">
-                  <mat-label>Usuario</mat-label>
-                  <input placeholder="Usuario" formControlName="username" matInput type="text">
-                </mat-form-field>
-            
+            <mat-form-field appearance="fill">
+              <mat-label>Usuario</mat-label>
+              <input
+                placeholder="Usuario"
+                formControlName="username"
+                matInput
+                type="text"
+              />
+            </mat-form-field>
+
             <mat-form-field appearance="fill">
               <mat-label>Enter your password</mat-label>
-              <input matInput [type]="hide ? 'password' : 'text'">
-              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <input matInput [type]="hide ? 'password' : 'text'" />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide"
+              >
+                <mat-icon>{{
+                  hide ? "visibility_off" : "visibility"
+                }}</mat-icon>
               </button>
             </mat-form-field>
-            
-                <mat-form-field  appearance="fill">
-                  <mat-label>Nombre</mat-label>
-                  <input placeholder="Nombre" formControlName="nombre" matInput type="text">
-                </mat-form-field>
-            
-          
-                <mat-form-field  appearance="fill">
-                  <mat-label>Apellidos</mat-label>
-                  <input placeholder="Apellido" formControlName="apellido" matInput type="text">
-                </mat-form-field>
-            
-          
-                <mat-form-field appearance="fill">
-                  <mat-label>Tipo de Usuario</mat-label>
-                  <input placeholder="Tipo de usuario" formControlName="userType" matInput type="text">
-                </mat-form-field>
-            
-           
-           
+
+            <mat-form-field appearance="fill">
+              <mat-label>Nombre</mat-label>
+              <input
+                placeholder="Nombre"
+                formControlName="nombre"
+                matInput
+                type="text"
+              />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Apellidos</mat-label>
+              <input
+                placeholder="Apellido"
+                formControlName="apellido"
+                matInput
+                type="text"
+              />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Tipo de Usuario</mat-label>
+              <input
+                placeholder="Tipo de usuario"
+                formControlName="userType"
+                matInput
+                type="text"
+              />
+            </mat-form-field>
           </mat-card-content>
           <mat-card-actions>
-            <button [disabled]="userForm.invalid" mat-raised-button type="submit">Guardar</button>
+            <button
+              [disabled]="userForm.invalid"
+              mat-raised-button
+              type="submit"
+            >
+              Guardar
+            </button>
           </mat-card-actions>
         </mat-card>
-        
       </form>
     </div>
     <div class="lista">
@@ -66,52 +92,57 @@
           />
         </mat-form-field>
       </div>
-       
-    
+
       <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource" >
+        <table mat-table [dataSource]="dataSource">
           <!-- ID Column -->
           <ng-container matColumnDef="ID">
-            <th mat-header-cell *matHeaderCellDef >ID</th>
+            <th mat-header-cell *matHeaderCellDef>ID</th>
             <td mat-cell *matCellDef="let row">{{ row.ID_USUARIO }}</td>
           </ng-container>
-      
+
           <!-- Progress Column -->
           <ng-container matColumnDef="Nombre">
-            <th mat-header-cell *matHeaderCellDef >Nombre</th>
+            <th mat-header-cell *matHeaderCellDef>Nombre</th>
             <td mat-cell *matCellDef="let row">{{ row.NOMBRE }}</td>
           </ng-container>
-      
+
           <!-- Name Column -->
           <ng-container matColumnDef="Apellido">
-            <th mat-header-cell *matHeaderCellDef >Apellido</th>
+            <th mat-header-cell *matHeaderCellDef>Apellido</th>
             <td mat-cell *matCellDef="let row">{{ row.APELLIDO }}</td>
           </ng-container>
-      
+
           <!-- Fruit Column -->
           <ng-container matColumnDef="Fecha de Creación">
-            <th mat-header-cell *matHeaderCellDef >Fecha de creación</th>
+            <th mat-header-cell *matHeaderCellDef>Fecha de creación</th>
             <td mat-cell *matCellDef="let row">{{ row.FECHA_CREACION }}</td>
           </ng-container>
           <ng-container matColumnDef="Opcions">
-            <th mat-header-cell *matHeaderCellDef >Opcions</th>
+            <th mat-header-cell *matHeaderCellDef>Opcions</th>
             <td mat-cell *matCellDef="let row">
-             
-              <button mat-raised-button class="mr-1" (click)="openDialog(row)">Editar</button>
-              <button mat-raised-button (click)="deleteUser(row.ID_USUARIO)" color="warn">Eliminar</button>
+              <button mat-raised-button class="mr-1" (click)="openDialog(row)">
+                Editar
+              </button>
+              <button
+                mat-raised-button
+                (click)="deleteUser(row.ID_USUARIO)"
+                color="warn"
+              >
+                Eliminar
+              </button>
             </td>
           </ng-container>
-      
+
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      
-     
         </table>
-      
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 25, 100]"
+          showFirstLastButtons
+        ></mat-paginator>
       </div>
     </div>
-   
-    
   </div>
 </div>
