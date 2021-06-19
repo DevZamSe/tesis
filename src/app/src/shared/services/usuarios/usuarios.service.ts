@@ -30,5 +30,10 @@ export class UsuariosService {
       headers: this.authSession.headerSession(),
     });
   }
+  editUser(data:any){
+    return this.http.post(`${environment.url}/api/v1/users/update`,data,{
+      headers: this.authSession.headerSession(),
+    });
+  }
 
 }

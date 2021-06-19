@@ -15,6 +15,7 @@ import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { ModalUsuarioEditComponent } from './components/modals/modal-usuario-edit/modal-usuario-edit.component';
 import { RandomColorPipe } from '../shared/pipes/randomColor/random-color.pipe';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { ModalClientEditComponent } from './components/modals/modal-client-edit/modal-client-edit.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
     OrdencompraComponent,
     UsuariosComponent,
     RandomColorPipe,
-    ModalUsuarioEditComponent
+    ModalUsuarioEditComponent,
+    ModalClientEditComponent
     
   ],
   imports: [CommonModule, FeaturedModulesRoutingModule, MaterialModule,FormsModule, ReactiveFormsModule],

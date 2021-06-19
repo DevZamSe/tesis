@@ -13,38 +13,6 @@ import { Router } from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import { ModalUsuarioEditComponent } from './../modals/modal-usuario-edit/modal-usuario-edit.component';
 
-/** Constants used to fill up our data base. */
-// const FRUITS: string[] = [
-//   'blueberry',
-//   'lychee',
-//   'kiwi',
-//   'mango',
-//   'peach',
-//   'lime',
-//   'pomegranate',
-//   'pineapple',
-// ];
-// const NAMES: string[] = [
-//   'Maia',
-//   'Asher',
-//   'Olivia',
-//   'Atticus',
-//   'Amelia',
-//   'Jack',
-//   'Charlotte',
-//   'Theodore',
-//   'Isla',
-//   'Oliver',
-//   'Isabella',
-//   'Jasper',
-//   'Cora',
-//   'Levi',
-//   'Violet',
-//   'Arthur',
-//   'Mia',
-//   'Thomas',
-//   'Elizabeth',
-// ];
 
 @Component({
   selector: 'app-usuarios',
@@ -57,11 +25,10 @@ export class UsuariosComponent implements OnInit {
   userForm= new FormGroup({
     username:new FormControl(''),
     password:new FormControl(''),
-  nombre:new FormControl(''),
-  apellido:new FormControl(''),
-  userType:new FormControl(''),
-
-  });
+    nombre:new FormControl(''),
+    apellido:new FormControl(''),
+    userType:new FormControl(''),
+    });
 
   public displayedColumns: string[] = [
     'ID',
@@ -108,6 +75,7 @@ export class UsuariosComponent implements OnInit {
       .subscribe((response) => {
         console.log(response);
         // this.router.navigate(['./admin/products']);
+        this.userForm.reset();
         this.getData();
       });
     }
@@ -125,17 +93,10 @@ export class UsuariosComponent implements OnInit {
   }
 
   createNewUser(id: number): ResponseClient {
-    // const name =
-    //   NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-    //   ' ' +
-    //   NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
-    //   '.';
+
 
     return {
-      // id: id.toString(),
-      // name: name,
-      // progress: Math.round(Math.random() * 100).toString(),
-      // fruit: FRUITS[Math.round(Math.random() * (FRUITS.length - 1))],
+  
 
       APELLIDO: 'string',
       FECHA_CREACION: 'string',
@@ -162,16 +123,19 @@ export class UsuariosComponent implements OnInit {
     this.dataSource = [...this.dataSource];
   } );
 }
-  // openDialog(){
-  //   const editModal=this.dialog.open(ModalUsuarioEditComponent,{  
-  //     minWidth: "400px",
-  //     maxWidth: "800px",
-  //   });
-  //   editModal.afterClosed().subscribe((result) => {
-  //     result
-  //       ? this.getData()
-  //       : console.log("cancelaste el modal o hubo un error");
-  //   });
-  // }
+  openDialog(row:any){
+    console.log(row);
+    
+    const editModal=this.dialog.open(ModalUsuarioEditComponent,{  
+      data:row,
+      minWidth: "400px",
+      maxWidth: "800px",
+    });
+    editModal.afterClosed().subscribe((result) => {
+      result
+        ? this.getData()
+        : console.log("cancelaste el modal o hubo un error");
+    });
+  }
  
 }

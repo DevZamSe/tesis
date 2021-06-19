@@ -27,4 +27,9 @@ export class ClientesService {
         headers: this.authSession.headerSession(),
       });
     }
+    editClients(data:any){
+      return this.http.post(`${environment.url}/api/v1/clients/update`,data,{
+        headers: this.authSession.headerSession(),
+      });
+    }
 }

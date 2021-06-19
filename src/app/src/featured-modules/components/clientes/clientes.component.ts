@@ -3,7 +3,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ResponseClient } from './../../../shared/interfaces/clientes';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import {MatDialog} from '@angular/material/dialog';
 import { ClientesService } from 'src/app/src/shared/services/clientes/clientes.service';
+import { ModalClientEditComponent } from '../modals/modal-client-edit/modal-client-edit.component';
 @Component({
   selector: 'app-clientes',
   templateUrl: './clientes.component.html',
@@ -48,6 +50,7 @@ export class ClientesComponent implements OnInit {
   
   constructor(
      private clientesService: ClientesService,
+     public dialog: MatDialog
  ) { }
 
   ngOnInit(): void {
@@ -71,6 +74,7 @@ saveUser(event: Event) {
     .subscribe((response) => {
       console.log(response);
       // this.router.navigate(['./admin/products']);
+      this.userForm.reset();
       this.getData();
     });
   }
@@ -105,5 +109,19 @@ deleteUser(id:number)
     this.dataSource.splice(index, 1);
     this.dataSource = [...this.dataSource];
   } );
+}
+openDialog(row:any){
+  console.log(row);
+  
+  const editModal=this.dialog.open(ModalClientEditComponent,{  
+    data:row,
+    minWidth: "400px",
+    maxWidth: "800px",
+  });
+  editModal.afterClosed().subscribe((result) => {
+    result
+      ? this.getData()
+      : console.log("cancelaste el modal o hubo un error");
+  });
 }
 }

@@ -70,7 +70,9 @@ saveSale(){
     .subscribe((response) => {
       console.log(response);
       // this.router.navigate(['./admin/products']);
+      this.userForm.reset();
       this.getData();
+      
     });
   }
 }

@@ -1,0 +1,64 @@
+<div class="formulario">
+    <form [formGroup]="userForm" (ngSubmit)="editClient($event)">
+      <mat-card class="formu">
+        <mat-card-header>
+          <mat-card-title>Agregar Cliente</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="Formcontent">
+         
+              <mat-form-field appearance="fill">
+                <mat-label>Nombre</mat-label>
+                <input placeholder="Nombre" formControlName="nombre" matInput type="text">
+              </mat-form-field>
+          
+          
+              <mat-form-field  appearance="fill">
+                <mat-label>Apellido</mat-label>
+                <input placeholder="Apellido" formControlName="apellido" matInput type="text">
+              </mat-form-field>
+          
+        
+              <mat-form-field  appearance="fill">
+                <mat-label>Tipo de Documento</mat-label>
+                <input placeholder="Tipo de documento" formControlName="tipoDocumento" matInput type="text">
+              </mat-form-field>
+          
+        
+              <mat-form-field appearance="fill">
+                <mat-label>Numero de Documento</mat-label>
+                <input placeholder="Numero de Documento" formControlName="numDocumento" matInput type="text">
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Sexo</mat-label>
+                <input placeholder="sexo" formControlName="sexo" matInput type="text">
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Dirección</mat-label>
+                <input placeholder="Dirección" formControlName="direcion" matInput type="text">
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Distrito</mat-label>
+                <input placeholder="Distrito" formControlName="distrito" matInput type="text">
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Telefono</mat-label>
+                <input placeholder="Telefono" formControlName="telefono" matInput type="text">
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Edad</mat-label>
+                <input placeholder="Edad" formControlName="edad" matInput type="text">
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input placeholder="Email" formControlName="email" matInput type="text">
+              </mat-form-field>
+         
+         
+        </mat-card-content>
+        <mat-card-actions>
+          <button [disabled]="userForm.invalid" mat-raised-button type="submit">Guardar</button>
+        </mat-card-actions>
+      </mat-card>
+      
+    </form>
+  </div>
