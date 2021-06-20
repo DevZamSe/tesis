@@ -17,6 +17,7 @@ import {
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalUsuarioEditComponent } from './../modals/modal-usuario-edit/modal-usuario-edit.component';
+import { ExportExcelPipe } from 'src/app/src/shared/pipes/exportExcel/export-excel.pipe';
 
 @Component({
   selector: 'app-usuarios',
@@ -131,5 +132,9 @@ export class UsuariosComponent implements OnInit {
         ? this.getData()
         : console.log('cancelaste el modal o hubo un error');
     });
+  }
+
+  exportexcel() {
+    new ExportExcelPipe().transform('usuarios.xlsx', 'excel-usuarios');
   }
 }

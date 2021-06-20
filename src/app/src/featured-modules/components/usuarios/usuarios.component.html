@@ -1,7 +1,7 @@
 <div class="container">
   <div class="content">
     <div class="botones">
-      <button mat-raised-button>Exportar Datos</button>
+      <button (click)="exportexcel()" mat-raised-button>Exportar Datos</button>
     </div>
     <div class="formulario">
       <form [formGroup]="userForm" (ngSubmit)="saveUser($event)">
@@ -94,7 +94,7 @@
       </div>
 
       <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource">
+        <table id="excel-usuarios" mat-table [dataSource]="dataSource">
           <!-- ID Column -->
           <ng-container matColumnDef="ID">
             <th mat-header-cell *matHeaderCellDef>ID</th>

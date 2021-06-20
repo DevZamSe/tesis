@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Chart } from 'chart.js';
 import { ChartData, TablePrediction } from 'src/app/src/shared/data/chart';
 import { PredictionList } from 'src/app/src/shared/interfaces/predictions';
+import { ExportExcelPipe } from 'src/app/src/shared/pipes/exportExcel/export-excel.pipe';
 import { RandomColorPipe } from 'src/app/src/shared/pipes/randomColor/random-color.pipe';
 import { PredictionsService } from 'src/app/src/shared/services/predictions/predictions.service';
 
@@ -144,5 +145,9 @@ export class PrediccionComponent implements OnInit {
         i.PRECISION_MODELO.toString().includes(this.nameFilter) ||
         i.PREDICCION.toString().includes(this.nameFilter)
     );
+  }
+
+  exportexcel() {
+    new ExportExcelPipe().transform('prediccion.xlsx', 'excel-prediccion');
   }
 }

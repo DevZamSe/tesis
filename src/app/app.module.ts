@@ -10,11 +10,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { ChartsModule } from 'ng2-charts';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
+import { ExportExcelPipe } from './src/shared/pipes/exportExcel/export-excel.pipe';
 
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ExportExcelPipe],
   imports: [
     BrowserModule,
     AppRoutingModule,

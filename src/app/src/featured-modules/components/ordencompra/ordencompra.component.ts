@@ -1,25 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 import { PurchasesService } from 'src/app/src/shared/services/purchases/purchases.service';
-import {ResponsePurchase} from './../../../shared/interfaces/purchases';
+import { ResponsePurchase } from './../../../shared/interfaces/purchases';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { ExportExcelPipe } from 'src/app/src/shared/pipes/exportExcel/export-excel.pipe';
 @Component({
   selector: 'app-ordencompra',
   templateUrl: './ordencompra.component.html',
-  styleUrls: ['./ordencompra.component.scss']
+  styleUrls: ['./ordencompra.component.scss'],
 })
 export class OrdencompraComponent implements OnInit {
-  
   hide = true;
   public nameFilter!: string;
-  userForm= new FormGroup({
-    modeloid:new FormControl(''),
-    productid:new FormControl(''),
-    proovedor:new FormControl(''),
-    mensaje:new FormControl('')
-
+  userForm = new FormGroup({
+    modeloid: new FormControl(''),
+    productid: new FormControl(''),
+    proovedor: new FormControl(''),
+    mensaje: new FormControl(''),
   });
   public displayedColumns: string[] = [
     'PROVEEDOR',
@@ -28,34 +32,32 @@ export class OrdencompraComponent implements OnInit {
     'ID_PRODUCTO',
     'ID_RESULTADO_MODELO',
     'FECHA',
-    'OPCIONES'
+    'OPCIONES',
   ];
   public datos: Array<ResponsePurchase> = [];
-  public dataSource =this.datos;
- 
+  public dataSource = this.datos;
 
   public paginator!: MatPaginator;
   public sort!: MatSort;
-  constructor(private purchasesService:PurchasesService) { }
+  constructor(private purchasesService: PurchasesService) {}
 
   ngOnInit(): void {
     this.getData();
   }
 
-  getData(){
-    this.purchasesService.listPurchases().subscribe((datos)=>{
+  getData() {
+    this.purchasesService.listPurchases().subscribe((datos) => {
       this.datos = JSON.parse(JSON.stringify(datos))
-      .response as Array<ResponsePurchase>;
-    this.dataSource=this.datos;
-    })
+        .response as Array<ResponsePurchase>;
+      this.dataSource = this.datos;
+    });
   }
-  savePurchase(){
+  savePurchase() {
     if (this.userForm.valid) {
       const purchase = this.userForm.value;
       console.log(purchase);
-      
-      this.purchasesService.addPurchases(purchase)
-      .subscribe((response) => {
+
+      this.purchasesService.addPurchases(purchase).subscribe((response) => {
         console.log(response);
         // this.router.navigate(['./admin/products']);
         this.getData();
@@ -71,24 +73,26 @@ export class OrdencompraComponent implements OnInit {
         i.MENSAJE.toLowerCase().includes(this.nameFilter) ||
         i.ID_ORDEN_COMPRA.toString().includes(this.nameFilter) ||
         i.ID_PRODUCTO.toString().includes(this.nameFilter) ||
-        i.FECHA.toString().includes(this.nameFilter) 
- 
+        i.FECHA.toString().includes(this.nameFilter)
     );
   }
-  deleteProduct(id:number)
-  {
-    let data={
-      productid:id,
-    }
+  deleteProduct(id: number) {
+    let data = {
+      productid: id,
+    };
     console.log(data);
-    
-    this.purchasesService.deletePurchases(data).subscribe(rpta=>{
+
+    this.purchasesService.deletePurchases(data).subscribe((rpta) => {
       console.log(rpta);
-      const index = this.dataSource.findIndex((orden) =>{orden.ID_PRODUCTO == id;
-   
-      } );
+      const index = this.dataSource.findIndex((orden) => {
+        orden.ID_PRODUCTO == id;
+      });
       this.dataSource.splice(index, 1);
       this.dataSource = [...this.dataSource];
-    } );
+    });
+  }
+
+  exportexcel() {
+    new ExportExcelPipe().transform('orden-compra.xlsx', 'excel-ordencompra');
   }
 }
