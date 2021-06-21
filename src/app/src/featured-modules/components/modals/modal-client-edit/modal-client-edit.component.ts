@@ -59,14 +59,22 @@ export class ModalClientEditComponent implements OnInit {
       const user = this.userForm.value;
      
     
-      user['clienteid']=this.data.ID_CLIENTE;
+      user['clientid']=this.data.ID_CLIENTE;
+      console.log(this.data.ID_CLIENTE);
+      
       console.log(user);
       
       
       this.clientesService.editClients(user)
       .subscribe((response) => {
-        console.log(response);
+        if (response) {
+          this.dialogRef.close(true);
+        } else {
+          this.dialogRef.close(false);
+          
+        }
        
+      
         
       });
     }
