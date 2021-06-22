@@ -22,7 +22,7 @@
 
             <mat-form-field appearance="fill">
               <mat-label>Contraseña</mat-label>
-              <input matInput [type]="hide ? 'password' : 'text'" />
+              <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" />
               <button
                 mat-icon-button
                 matSuffix

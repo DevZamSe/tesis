@@ -99,11 +99,12 @@ export class ClientesComponent implements OnInit {
     };
     this.clientesService.deleteClients(data).subscribe((rpta) => {
       console.log(rpta);
-      const index = this.dataSource.findIndex((user) => {
-        user.id_cliente == id;
-      });
-      this.dataSource.splice(index, 1);
-      this.dataSource = [...this.dataSource];
+      this.getData()
+      // const index = this.dataSource.findIndex((user) => {
+      //   user.id_cliente == id;
+      // });
+      // this.dataSource.splice(index, 1);
+      // this.dataSource = [...this.dataSource];
     });
   }
   openDialog(row: any): void {
