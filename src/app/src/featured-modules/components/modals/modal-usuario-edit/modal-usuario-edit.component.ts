@@ -54,7 +54,12 @@ console.log(this.data);
       
       this.usuariosService.editUser(user)
       .subscribe((response) => {
-        console.log(response);
+        if (response) {
+          this.dialogRef.close(true);
+        } else {
+          this.dialogRef.close(false);
+          
+        }
        
         
       });

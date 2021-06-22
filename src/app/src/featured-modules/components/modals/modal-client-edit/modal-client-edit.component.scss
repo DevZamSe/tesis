@@ -1,0 +1,57 @@
+table {
+    width: 100%;
+  }
+  .container {
+    width: 100%;
+    height: 100%;
+  }
+  .content {
+    margin: 3rem 2rem;
+  }
+  .lista {
+    margin-top: 2rem;
+  }
+  .botones {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .filtro {
+    border: 1px paleturquoise solid;
+    width: 100%;
+  }
+  
+  .formulario {
+    margin-top: 2rem;
+  }
+  .formu {
+    padding: 2rem;
+  }
+  .mr-1 {
+    margin-right: 0.5rem;
+  }
+  .Formcontent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  button,
+  mat-card-title,
+  mat-label,
+  input,
+  h1,
+  mat-header-cell,
+  mat-cell,
+  th,
+  td,
+  button,
+  mat-paginator {
+    font-family: "Ubuntu", sans-serif;
+  }
+  ::ng-deep .mat-paginator-page-size {
+    display: none !important;
+  }
+  
+  ::ng-deep .mat-paginator-range-label {
+    display: none !important;
+  }
+  

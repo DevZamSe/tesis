@@ -18,10 +18,15 @@
               </mat-form-field>
           
         
-              <mat-form-field  appearance="fill">
-                <mat-label>Tipo de Documento</mat-label>
-                <input placeholder="Tipo de documento" formControlName="tipoDocumento" matInput type="text">
+              <mat-form-field appearance="fill">
+                <mat-label  >Tipo de Documento</mat-label>
+                <mat-select formControlName="tipoDocumento">
+                  <mat-option value="1">DNI</mat-option>
+                  <mat-option value="2">Carne de Extranjeria</mat-option>
+                  <mat-option value="3">RUC</mat-option>
+                </mat-select>
               </mat-form-field>
+  
           
         
               <mat-form-field appearance="fill">
@@ -30,7 +35,11 @@
               </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Sexo</mat-label>
-                <input placeholder="sexo" formControlName="sexo" matInput type="text">
+                <mat-select  formControlName="sexo">
+                  <mat-option value="M">Masculino</mat-option>
+                  <mat-option value="F">Femenino</mat-option>
+                  <mat-option value="N">No Especifica</mat-option>
+                </mat-select>
               </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Dirección</mat-label>
