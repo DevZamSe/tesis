@@ -107,16 +107,26 @@ export class UsuariosComponent implements OnInit {
       USERNAME: 'string',
     };
   }
-  deleteUser(id: number) {
+  deleteUser(id: any) {
     let data = {
       userid: id,
     };
+    console.log(data);
+    
     this.usuariosService.deleteUser(data).subscribe((rpta) => {
-      const index = this.dataSource.findIndex((user) => {
-        user.ID_USUARIO == id;
-      });
-      this.dataSource.splice(index, 1);
-      this.dataSource = [...this.dataSource];
+      
+      this.getData();
+      // const index = this.dataSource.findIndex((user) => {
+      //   user.ID_USUARIO === parseInt(id);
+      //   console.log( user.ID_USUARIO);
+      //   console.log( id);
+      // });
+    
+      
+      // console.log(index);
+      
+      // this.dataSource.splice(index, 1);
+      // this.dataSource = [...this.dataSource];
     });
   }
   openDialog(row: any) {
