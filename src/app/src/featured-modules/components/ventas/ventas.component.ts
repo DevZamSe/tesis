@@ -79,12 +79,14 @@ export class VentasComponent implements OnInit {
       salesid: id,
     };
     this.ventasService.delete(data).subscribe((rpta) => {
-      console.log(rpta);
-      const index = this.dataSource.findIndex((venta) => {
-        venta.ID_CLIENTE == id;
-      });
-      this.dataSource.splice(index, 1);
-      this.dataSource = [...this.dataSource];
+     
+     this.getData();
+      // console.log(rpta);
+      // const index = this.dataSource.findIndex((venta) => {
+      //   venta.ID_CLIENTE == id;
+      // });
+      // this.dataSource.splice(index, 1);
+      // this.dataSource = [...this.dataSource];
     });
   }
 

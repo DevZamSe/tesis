@@ -74,12 +74,14 @@ export class InventarioComponent implements OnInit {
       productid: id,
     };
     this.productsService.deleteProduct(data).subscribe((rpta) => {
-      console.log(rpta);
-      const index = this.dataSource.findIndex((product) => {
-        product.ID_PRODUCTO == id;
-      });
-      this.dataSource.splice(index, 1);
-      this.dataSource = [...this.dataSource];
+     
+     this.getData()
+      // console.log(rpta);
+      // const index = this.dataSource.findIndex((product) => {
+      //   product.ID_PRODUCTO == id;
+      // });
+      // this.dataSource.splice(index, 1);
+      // this.dataSource = [...this.dataSource];
     });
   }
   exportexcel() {

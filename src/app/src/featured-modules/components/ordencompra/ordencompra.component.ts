@@ -83,12 +83,15 @@ export class OrdencompraComponent implements OnInit {
     console.log(data);
 
     this.purchasesService.deletePurchases(data).subscribe((rpta) => {
-      console.log(rpta);
-      const index = this.dataSource.findIndex((orden) => {
-        orden.ID_PRODUCTO == id;
-      });
-      this.dataSource.splice(index, 1);
-      this.dataSource = [...this.dataSource];
+    
+    
+    this.getData();
+      // console.log(rpta);
+      // const index = this.dataSource.findIndex((orden) => {
+      //   orden.ID_PRODUCTO == id;
+      // });
+      // this.dataSource.splice(index, 1);
+      // this.dataSource = [...this.dataSource];
     });
   }
 
