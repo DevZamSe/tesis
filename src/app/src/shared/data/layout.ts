@@ -5,6 +5,7 @@ export const superadmin: Array<permission> = [
   { id: 2, name: 'Clientes' },
   { id: 3, name: 'Ventas' },
   { id: 4, name: 'Predicción' },
+  { id: 5, name: 'Reportes' },
   { id: 6, name: 'Orden de compra' },
   { id: 7, name: 'Producto' },
   { id: 8, name: 'Cerrar Sesión' },
