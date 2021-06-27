@@ -1,13 +1,58 @@
 table {
-    width: 100%;
+  width: 100%;
+}
+.container {
+  width: 100%;
+  height: 100%;
+}
+.content {
+  margin: 3rem 2rem;
+}
+.totales {
+  margin-top: 2rem;
+}
+
+section {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 2rem;
+
+  .fix {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    padding-left: 1.2rem;
+    padding-top: 1rem;
+    padding-right: 3rem;
+    background: #ff4081;
+    color: aliceblue;
+    margin-left: 3rem;
+    margin-top: 1rem;
+    margin-right: 3rem;
+
+    h1 {
+      margin-bottom: 0.4rem;
+    }
   }
-  .container {
-    width: 100%;
-    height: 100%;
-  }
-  .content {
-    margin: 3rem 2rem;
-  }
-  .totales{
-    margin-top: 2rem;
-  }
+}
+
+button,
+mat-card-title,
+mat-label,
+input,
+h1,
+mat-header-cell,
+mat-cell,
+th,
+td,
+button,
+mat-paginator {
+  font-family: "Ubuntu", sans-serif;
+}
+::ng-deep .mat-paginator-page-size {
+  display: none !important;
+}
+
+::ng-deep .mat-paginator-range-label {
+  display: none !important;
+}

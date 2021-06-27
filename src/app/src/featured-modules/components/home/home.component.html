@@ -1,11 +1,20 @@
-<section>
-  <h1>Cantidad de ventas</h1>
-</section>
+<div class="container">
+  <section>
+    <div class="fix">
+      <h1>Ventas totales</h1>
+      <h4>{{ ventas }}</h4>
+    </div>
+    <div class="fix">
+      <h1>Compras totales</h1>
+      <h4>{{ compras }}</h4>
+    </div>
+    <div class="fix">
+      <h1>Ganancia neta</h1>
+      <h4>S/ {{ ganancia }}</h4>
+    </div>
+  </section>
 
-<section>
-  <h1>Stock actual</h1>
-</section>
-
-<section>
-  <h1>Usuarios registrados</h1>
-</section>
+  <canvas id="myChart" class="canvas1"></canvas>
+  <canvas id="myChart2" class="canvas1"></canvas>
+  <canvas id="myChart3" class="canvas1"></canvas>
+</div>

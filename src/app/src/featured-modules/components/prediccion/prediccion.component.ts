@@ -40,12 +40,9 @@ export class PrediccionComponent implements OnInit {
           .response as Array<PredictionList>;
         this.dataSource = this.datos;
         this.createLineChart();
-        this.createLineChart2();
       },
       (error) => {
-        console.log(error);
         this.createLineChart();
-        this.createLineChart2();
       }
     );
   }
@@ -93,48 +90,6 @@ export class PrediccionComponent implements OnInit {
     }
 
     return data;
-  }
-
-  public createLineChart2(): void {
-    this.canvas = document.getElementById('myChart2');
-    this.ctx = this.canvas.getContext('2d');
-
-    let chart = new Chart(this.ctx, {
-      type: 'line',
-      data: {
-        labels: this.labels,
-        datasets: [
-          {
-            label: 'Lusho',
-            data: this.dataCases.chart1,
-            backgroundColor: new RandomColorPipe().transform(),
-            fill: false,
-            borderWidth: 2,
-          },
-          {
-            label: 'Gato',
-            data: this.dataCases.chart2,
-            backgroundColor: new RandomColorPipe().transform(),
-            fill: false,
-            borderWidth: 2,
-          },
-        ],
-      },
-      options: {
-        title: {
-          display: false,
-          text: 'First chart',
-        },
-        tooltips: {
-          mode: 'index',
-          intersect: true,
-        },
-        hover: {
-          mode: 'nearest',
-          intersect: true,
-        },
-      },
-    });
   }
 
   public applyFilter(): void {
