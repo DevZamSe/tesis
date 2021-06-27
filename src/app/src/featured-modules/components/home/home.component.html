@@ -1,20 +1,27 @@
 <div class="container">
   <section>
     <div class="fix">
-      <h1>Ventas totales</h1>
-      <h4>{{ ventas }}</h4>
+      <h1>{{ ventas }}</h1>
+      <h4>Ventas del mes</h4>
     </div>
     <div class="fix">
-      <h1>Compras totales</h1>
-      <h4>{{ compras }}</h4>
+      <h1>{{ compras }}</h1>
+      <h4>Compras del mes</h4>
     </div>
     <div class="fix">
-      <h1>Ganancia neta</h1>
-      <h4>S/ {{ ganancia }}</h4>
+      <h1>S/ {{ ganancia }}</h1>
+      <h4>Ingreso del mes</h4>
     </div>
   </section>
 
-  <canvas id="myChart" class="canvas1"></canvas>
-  <canvas id="myChart2" class="canvas1"></canvas>
-  <canvas id="myChart3" class="canvas1"></canvas>
+  <div class="section2">
+    <h1>Reporte de ingresos</h1>
+    <canvas id="myChart" class="canvas1"></canvas>
+  </div>
+
+  <div class="section2">
+    <h1>Reportes de ventas</h1>
+    <canvas id="myChart2" class="canvas2"></canvas>
+    <!-- <canvas id="myChart3" class="canvas2"></canvas> -->
+  </div>
 </div>

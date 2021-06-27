@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
         labels: this.labels,
         datasets: [
           {
-            label: 'Reporte Ganancia',
+            label: ' ',
             data: this.forData(),
             backgroundColor: new RandomColorPipe().transform(),
             fill: false,
@@ -68,6 +68,7 @@ export class HomeComponent implements OnInit {
         ],
       },
       options: {
+        responsive: true,
         title: {
           display: false,
           text: 'First chart',
@@ -89,7 +90,7 @@ export class HomeComponent implements OnInit {
     this.ctx = this.canvas.getContext('2d');
 
     let chart = new Chart(this.ctx, {
-      type: 'bar',
+      type: 'polarArea',
       data: {
         labels: this.labels,
         datasets: [
@@ -124,7 +125,7 @@ export class HomeComponent implements OnInit {
     this.ctx = this.canvas.getContext('2d');
 
     let chart = new Chart(this.ctx, {
-      type: 'bar',
+      type: 'doughnut',
       data: {
         labels: this.labels,
         datasets: [

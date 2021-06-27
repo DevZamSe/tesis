@@ -39,6 +39,7 @@ export class LoginService {
 
   onSave(data: any) {
     sessionStorage.setItem('token', data.token);
+    sessionStorage.setItem('view', data.userType);
   }
 
   headerSession(): HttpHeaders {
