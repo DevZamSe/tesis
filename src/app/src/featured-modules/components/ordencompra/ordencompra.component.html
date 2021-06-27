@@ -1,7 +1,7 @@
 <div class="container">
   <div class="content">
     <div class="botones">
-      <button (click)="exportexcel()" id="excel-ordencompra" mat-raised-button>
+      <button (click)="exportexcel()" id="excel-ordencompra" class="btn-color"  mat-raised-button>
         Exportar Datos
       </button>
     </div>
@@ -22,7 +22,7 @@
               />
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
+            <!-- <mat-form-field appearance="fill">
               <mat-label>Product ID</mat-label>
               <input
                 placeholder="Product ID"
@@ -30,8 +30,16 @@
                 matInput
                 type="number"
               />
+            </mat-form-field> -->
+            <mat-form-field appearance="fill">
+              <mat-label>Producto</mat-label>
+              <mat-select formControlName="productid">
+                <mat-option *ngFor="let item of ordenes" [value]="item.ID_PRODUCTO">
+                  {{item.NOMBRE_PRODUCTO}}
+                </mat-option>
+                
+              </mat-select>
             </mat-form-field>
-
             <mat-form-field appearance="fill">
               <mat-label>Proveedor</mat-label>
               <input

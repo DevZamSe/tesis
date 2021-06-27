@@ -81,22 +81,22 @@ export class ClientesComponent implements OnInit {
     // this.dataSource.includes(this.nameFilter.toLowerCase());
     this.dataSource = this.datos.filter(
       (i) =>
-        i.nombre.toString().includes(this.nameFilter) ||
-        i.apellido.toLowerCase().includes(this.nameFilter) ||
-        i.tipoDocumento.toString().includes(this.nameFilter) ||
-        i.sexo.toString().includes(this.nameFilter) ||
-        i.direcion.toString().includes(this.nameFilter) ||
-        i.distrito.toString().includes(this.nameFilter) ||
-        i.telefono.toString().includes(this.nameFilter) ||
-        i.edad.toString().includes(this.nameFilter) ||
-        i.email.toString().includes(this.nameFilter) ||
-        i.numDocumento.toString().includes(this.nameFilter)
+        i.NOMBRE.toLowerCase().includes(this.nameFilter.toLocaleLowerCase()) ||
+        i.APELLIDO.toString().includes(this.nameFilter.toLocaleLowerCase()) ||
+        i.SEXO.toString().includes(this.nameFilter.toLocaleLowerCase()) ||
+        i.DIRECCION.toString().includes(this.nameFilter.toLocaleLowerCase()) ||
+        i.DISTRITO.toString().includes(this.nameFilter.toLocaleLowerCase()) ||
+        i.TELEFONO.toString().includes(this.nameFilter.toLocaleLowerCase()) ||
+        i.EMAIL.toString().includes(this.nameFilter.toLocaleLowerCase()) 
+
     );
   }
   deleteUser(id: number): void {
     let data = {
       clientid: id,
     };
+    console.log(data);
+    
     this.clientesService.deleteClients(data).subscribe((rpta) => {
       console.log(rpta);
       this.getData()

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="content">
     <div class="botones">
-      <button (click)="exportexcel()" mat-raised-button>Exportar Datos</button>
+      <button (click)="exportexcel()" class="btn-color" mat-raised-button>Exportar Datos</button>
     </div>
     <div class="formulario">
       <form [formGroup]="userForm" (ngSubmit)="saveProduct($event)">

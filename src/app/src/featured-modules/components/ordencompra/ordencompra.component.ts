@@ -7,10 +7,12 @@ import {
 } from '@angular/forms';
 
 import { PurchasesService } from 'src/app/src/shared/services/purchases/purchases.service';
+import { ProductsService } from 'src/app/src/shared/services/products/products.service';
 import { ResponsePurchase } from './../../../shared/interfaces/purchases';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { ExportExcelPipe } from 'src/app/src/shared/pipes/exportExcel/export-excel.pipe';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 @Component({
   selector: 'app-ordencompra',
   templateUrl: './ordencompra.component.html',
@@ -35,14 +37,17 @@ export class OrdencompraComponent implements OnInit {
     'OPCIONES',
   ];
   public datos: Array<ResponsePurchase> = [];
+ ordenes: any = [];
   public dataSource = this.datos;
 
   public paginator!: MatPaginator;
   public sort!: MatSort;
-  constructor(private purchasesService: PurchasesService) {}
+  constructor(private purchasesService: PurchasesService,
+    private productsService:ProductsService) {}
 
   ngOnInit(): void {
     this.getData();
+    this.getProductos();
   }
 
   getData() {
@@ -51,6 +56,12 @@ export class OrdencompraComponent implements OnInit {
         .response as Array<ResponsePurchase>;
       this.dataSource = this.datos;
     });
+  }
+  getProductos(){
+    this.productsService.listProducts().subscribe((datos)=>{
+      this.ordenes=JSON.parse(JSON.stringify(datos)).response;
+
+    })
   }
   savePurchase() {
     if (this.userForm.valid) {

@@ -3,16 +3,16 @@ export interface ListClient {
   }
   
   export interface ResponseClient {
-    nombre: string,
-    apellido: string,
-    tipoDocumento: number,
-    numDocumento: string,
-    sexo:string,
-    direcion: string,
-    distrito: string,
-    telefono: string,
-    edad: number,
-    email: string,
-    id_cliente:number,
+    NOMBRE: string,
+    APELLIDO: string,
+    TIPO_DOCUMENTO: number,
+    NUM_DOCUMENTO: string,
+    SEXO:string,
+    DIRECCION: string,
+    DISTRITO: string,
+    TELEFONO: string,
+    EDAD: number,
+    EMAIL: string,
+    ID_CLIENTE:number,
   }
   

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="content">
     <div class="botones">
-      <button (click)="exportexcel()" mat-raised-button>Exportar Datos</button>
+      <button (click)="exportexcel()" class="btn-color" mat-raised-button>Exportar Datos</button>
     </div>
     <div class="formulario">
       <form [formGroup]="userForm" (ngSubmit)="saveSale()">
@@ -10,17 +10,28 @@
             <mat-card-title>Agregar Venta</mat-card-title>
           </mat-card-header>
           <mat-card-content class="Formcontent">
+            
             <mat-form-field appearance="fill">
-              <mat-label>Cliente ID</mat-label>
-              <input
-                placeholder="Cliente ID"
-                formControlName="clientid"
-                matInput
-                type="number"
-              />
+              <mat-label >Cliente</mat-label>
+              <mat-select formControlName="clientid">
+                <mat-option *ngFor="let item of clientes" [value]="item.ID_CLIENTE">
+                    {{item.NUM_DOCUMENTO}}  
+                </mat-option>
+              
+              </mat-select>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
+              <mat-label >Producto</mat-label>
+              <mat-select formControlName="productid">
+                <mat-option *ngFor="let item of productos" [value]="item.ID_PRODUCTO">
+                    {{item.NOMBRE_PRODUCTO}}  
+                </mat-option>
+              
+              </mat-select>
+            </mat-form-field>
+
+            <!-- <mat-form-field appearance="fill">
               <mat-label>Product ID</mat-label>
               <input
                 placeholder="Product ID"
@@ -28,7 +39,7 @@
                 matInput
                 type="number"
               />
-            </mat-form-field>
+            </mat-form-field> -->
 
             <mat-form-field appearance="fill">
               <mat-label>Cantidad</mat-label>

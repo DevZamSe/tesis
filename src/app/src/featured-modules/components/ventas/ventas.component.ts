@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { VentasService } from 'src/app/src/shared/services/ventas/ventas.service';
+import { ProductsService } from 'src/app/src/shared/services/products/products.service';
+import { ClientesService } from 'src/app/src/shared/services/clientes/clientes.service';
 import { SalesList } from './../../../shared/interfaces/ventas';
+import { ListProduct } from './../../../shared/interfaces/products';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import {
@@ -18,6 +21,7 @@ import { ExportExcelPipe } from 'src/app/src/shared/pipes/exportExcel/export-exc
 })
 export class VentasComponent implements OnInit {
   hide = true;
+
   public nameFilter!: string;
   public displayedColumns: string[] = [
     'ID_CLIENTE',
@@ -35,19 +39,37 @@ export class VentasComponent implements OnInit {
   });
   public datos: Array<SalesList> = [];
   public dataSource = this.datos;
-
+  productos: any = [];
+  clientes: any = [];
   public paginator!: MatPaginator;
   public sort!: MatSort;
-  constructor(private ventasService: VentasService) {}
+  constructor(
+    private ventasService: VentasService,
+    private productsService: ProductsService,
+    private clientesService: ClientesService
+  ) {}
 
   ngOnInit(): void {
     this.getData();
+    this.getProducts();
+    this.getClientes();
   }
   getData() {
     this.ventasService.list().subscribe((datos) => {
       this.datos = JSON.parse(JSON.stringify(datos))
         .response as Array<SalesList>;
       this.dataSource = this.datos;
+    });
+  }
+  getProducts() {
+    this.productsService.listProducts().subscribe((datos) => {
+      this.productos = JSON.parse(JSON.stringify(datos)).response;
+      console.log(this.productos);
+    });
+  }
+  getClientes() {
+    this.clientesService.listClients().subscribe((datos) => {
+      this.clientes = JSON.parse(JSON.stringify(datos)).response;
     });
   }
   public applyFilter(): void {
@@ -79,8 +101,7 @@ export class VentasComponent implements OnInit {
       salesid: id,
     };
     this.ventasService.delete(data).subscribe((rpta) => {
-     
-     this.getData();
+      this.getData();
       // console.log(rpta);
       // const index = this.dataSource.findIndex((venta) => {
       //   venta.ID_CLIENTE == id;
