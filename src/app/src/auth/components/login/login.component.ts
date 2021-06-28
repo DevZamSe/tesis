@@ -5,7 +5,8 @@ import {
   responseLogin,
 } from 'src/app/src/shared/interfaces/authLogin';
 import { LoginService } from 'src/app/src/shared/services/auth/login.service';
-
+import {ModalForgetPasswordComponent} from './../modal-forget-password/modal-forget-password.component'
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,7 +18,9 @@ export class LoginComponent implements OnInit {
     password: '',
   };
 
-  constructor(private authService: LoginService, private route: Router) {}
+  constructor(private authService: LoginService,
+     private route: Router,
+     public dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
@@ -33,5 +36,18 @@ export class LoginComponent implements OnInit {
         window.location.reload;
       }
     );
+  }
+  modal(){
+   
+
+    const editModal = this.dialog.open(ModalForgetPasswordComponent, {
+      minWidth: '400px',
+      maxWidth: '800px',
+    });
+    editModal.afterClosed().subscribe((result) => {
+      result
+        ? location.reload()
+        : console.log('cancelaste el modal o hubo un error');
+    });
   }
 }

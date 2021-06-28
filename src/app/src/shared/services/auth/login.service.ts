@@ -63,4 +63,9 @@ export class LoginService {
   logout(): void {
     sessionStorage.removeItem('token');
   }
+  resetPassword(data:any){
+    return this.http.post(`${environment.url}/api/v1/users/password`,data,{
+      headers: this.headerSession(),
+    });
+  }
 }

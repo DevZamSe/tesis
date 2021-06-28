@@ -46,9 +46,11 @@
         />
       </mat-form-field>
 
-      <h4>¿Olvidaste tu contraseña?</h4>
+      
+      <a mat-raised-button (click)="modal()">¿Olvidaste tu contraseña?</a>
 
-      <button mat-flat-button color="primary" (click)="enviar()">
+      <!-- <button mat-flat-button color="primary" (click)="enviar()">¿Olvidaste tu contraseña? </button> -->
+      <button class="espace" mat-flat-button color="primary" (click)="enviar()">
         Iniciar sesión
       </button>
     </form>
