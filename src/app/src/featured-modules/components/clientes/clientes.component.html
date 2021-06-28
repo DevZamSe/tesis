@@ -1,7 +1,9 @@
 <div class="container">
   <div class="content">
     <div class="botones">
-      <button (click)="exportexcel()" class="btn-color" mat-raised-button>Exportar Datos</button>
+      <button (click)="exportexcel()" class="btn-color" mat-raised-button>
+        Exportar Datos
+      </button>
     </div>
     <div class="formulario">
       <form [formGroup]="userForm" (ngSubmit)="saveUser($event)">
@@ -31,15 +33,13 @@
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-              <mat-label  >Tipo de Documento</mat-label>
+              <mat-label>Tipo de Documento</mat-label>
               <mat-select formControlName="tipoDocumento">
                 <mat-option value="1">DNI</mat-option>
                 <mat-option value="2">Carne de Extranjeria</mat-option>
                 <mat-option value="3">RUC</mat-option>
               </mat-select>
             </mat-form-field>
-
-            
 
             <mat-form-field appearance="fill">
               <mat-label>Numero de Documento</mat-label>
@@ -51,15 +51,14 @@
               />
             </mat-form-field>
             <mat-form-field appearance="fill">
-              <mat-label  >Sexo</mat-label>
-              <mat-select  formControlName="sexo">
+              <mat-label>Sexo</mat-label>
+              <mat-select formControlName="sexo">
                 <mat-option value="M">Masculino</mat-option>
                 <mat-option value="F">Femenino</mat-option>
                 <mat-option value="N">No Especifica</mat-option>
               </mat-select>
             </mat-form-field>
 
-          
             <mat-form-field appearance="fill">
               <mat-label>Dirección</mat-label>
               <input
@@ -134,7 +133,7 @@
       </div>
 
       <div class="mat-elevation-z8">
-        <table mat-table id="excel-table" [dataSource]="dataSource">
+        <table mat-table [dataSource]="dataSource">
           <!-- ID Column -->
           <ng-container matColumnDef="NOMBRE">
             <th mat-header-cell *matHeaderCellDef>NOMBRE</th>
@@ -219,5 +218,85 @@
         ></mat-paginator>
       </div>
     </div>
+  </div>
+
+  <div class="no-visible">
+    <table mat-table id="excel-table" [dataSource]="dataSource">
+      <!-- ID Column -->
+      <ng-container matColumnDef="NOMBRE">
+        <th mat-header-cell *matHeaderCellDef>NOMBRE</th>
+        <td mat-cell *matCellDef="let row">{{ row.NOMBRE }}</td>
+      </ng-container>
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef="APELLIDO">
+        <th mat-header-cell *matHeaderCellDef>APELLIDO</th>
+        <td mat-cell *matCellDef="let row">{{ row.APELLIDO }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="DIRECCION">
+        <th mat-header-cell *matHeaderCellDef>DIRECCION</th>
+        <td mat-cell *matCellDef="let row">{{ row.DIRECCION }}</td>
+      </ng-container>
+
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="DISTRITO">
+        <th mat-header-cell *matHeaderCellDef>DISTRITO</th>
+        <td mat-cell *matCellDef="let row">{{ row.DISTRITO }}</td>
+      </ng-container>
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="EDAD">
+        <th mat-header-cell *matHeaderCellDef>EDAD</th>
+        <td mat-cell *matCellDef="let row">{{ row.EDAD }}</td>
+      </ng-container>
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="EMAIL">
+        <th mat-header-cell *matHeaderCellDef>EMAIL</th>
+        <td mat-cell *matCellDef="let row">{{ row.EMAIL }}</td>
+      </ng-container>
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="ID_CLIENTE">
+        <th mat-header-cell *matHeaderCellDef>ID_CLIENTE</th>
+        <td mat-cell *matCellDef="let row">{{ row.ID_CLIENTE }}</td>
+      </ng-container>
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="NUM_DOCUMENTO">
+        <th mat-header-cell *matHeaderCellDef>NUM_DOCUMENTO</th>
+        <td mat-cell *matCellDef="let row">{{ row.NUM_DOCUMENTO }}</td>
+      </ng-container>
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="SEXO">
+        <th mat-header-cell *matHeaderCellDef>SEXO</th>
+        <td mat-cell *matCellDef="let row">{{ row.SEXO }}</td>
+      </ng-container>
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="TELEFONO">
+        <th mat-header-cell *matHeaderCellDef>TELEFONO</th>
+        <td mat-cell *matCellDef="let row">{{ row.TELEFONO }}</td>
+      </ng-container>
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="TIPO_DOCUMENTO">
+        <th mat-header-cell *matHeaderCellDef>TIPO_DOCUMENTO</th>
+        <td mat-cell *matCellDef="let row">{{ row.TIPO_DOCUMENTO }}</td>
+      </ng-container>
+      <ng-container class="no-visible" matColumnDef="OPCIONES">
+        <th mat-header-cell *matHeaderCellDef>OPCIONES</th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-raised-button class="mr-1" (click)="openDialog(row)">
+            Editar
+          </button>
+          <button
+            mat-raised-button
+            color="warn"
+            (click)="deleteUser(row.ID_CLIENTE)"
+          >
+            Eliminar
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
   </div>
 </div>

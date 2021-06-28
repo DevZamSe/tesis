@@ -87,8 +87,7 @@ export class ClientesComponent implements OnInit {
         i.DIRECCION.toString().includes(this.nameFilter.toLocaleLowerCase()) ||
         i.DISTRITO.toString().includes(this.nameFilter.toLocaleLowerCase()) ||
         i.TELEFONO.toString().includes(this.nameFilter.toLocaleLowerCase()) ||
-        i.EMAIL.toString().includes(this.nameFilter.toLocaleLowerCase()) 
-
+        i.EMAIL.toString().includes(this.nameFilter.toLocaleLowerCase())
     );
   }
   deleteUser(id: number): void {
@@ -96,10 +95,10 @@ export class ClientesComponent implements OnInit {
       clientid: id,
     };
     console.log(data);
-    
+
     this.clientesService.deleteClients(data).subscribe((rpta) => {
       console.log(rpta);
-      this.getData()
+      this.getData();
       // const index = this.dataSource.findIndex((user) => {
       //   user.id_cliente == id;
       // });
@@ -121,7 +120,7 @@ export class ClientesComponent implements OnInit {
         : console.log('cancelaste el modal o hubo un error');
     });
   }
-  exportexcel() {
+  exportexcel(): void {
     new ExportExcelPipe().transform('clientes.xlsx', 'excel-table');
   }
 }

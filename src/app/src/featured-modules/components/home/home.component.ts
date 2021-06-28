@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
       console.log('tmr', this.dataSource);
       this.createLineChart();
       this.createLineChart2();
-      this.createLineChart3();
+      // this.createLineChart3();
     });
   }
 
