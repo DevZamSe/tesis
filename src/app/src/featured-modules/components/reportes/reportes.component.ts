@@ -38,11 +38,11 @@ export class ReportesComponent implements OnInit {
   getData() {
     this.reportsService.listReport().subscribe((datos) => {
       this.datita = JSON.parse(JSON.stringify(datos));
-      console.log(this.datita);
+      //console.logthis.datita);
       this.compras = this.datita.compras_anual;
       this.ventas = this.datita.ventas_anual;
       this.dataSource = this.datita.mensual;
-      console.log('tmr', this.dataSource);
+      //console.log'tmr', this.dataSource);
       this.createLineChart();
       this.createLineChart2();
     });
@@ -58,7 +58,7 @@ export class ReportesComponent implements OnInit {
         labels: this.labels,
         datasets: [
           {
-            label: 'Reporte Mensual',
+            label: 'Ingreso anual',
             data: this.forData(),
             backgroundColor: new RandomColorPipe().transform(),
             fill: false,
@@ -93,7 +93,7 @@ export class ReportesComponent implements OnInit {
         labels: this.labels,
         datasets: [
           {
-            label: 'Reporte Ventas',
+            label: 'Ventas mensual',
             data: this.forData2(),
             backgroundColor: new RandomColorPipe().transform(),
             fill: false,

@@ -13,16 +13,18 @@ export const superadmin: Array<permission> = [
 ];
 
 export const admin: Array<permission> = [
-  { id: 0, name: 'Inicio' },
-  { id: 1, name: 'Usuario' },
+  // { id: 0, name: 'Inicio' },
+  // { id: 1, name: 'Usuario' },
   { id: 2, name: 'Clientes' },
   { id: 3, name: 'Ventas' },
-  { id: 4, name: 'Predicción' },
+  { id: 7, name: 'Producto' },
   { id: 8, name: 'Cerrar Sesión' },
 ];
 
 export const client: Array<permission> = [
-  { id: 0, name: 'Inicio' },
+  // { id: 0, name: 'Inicio' },
+  { id: 4, name: 'Predicción' },
+  { id: 5, name: 'Reportes' },
   { id: 6, name: 'Orden de compra' },
   { id: 7, name: 'Producto' },
   { id: 8, name: 'Cerrar Sesión' },

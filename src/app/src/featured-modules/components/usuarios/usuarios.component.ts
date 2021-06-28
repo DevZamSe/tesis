@@ -65,7 +65,7 @@ export class UsuariosComponent implements OnInit {
 
   getData() {
     this.authService.listUser().subscribe((datos) => {
-      console.log(datos);
+      //console.logdatos);
       this.datos = JSON.parse(JSON.stringify(datos))
         .response as Array<ResponseClient>;
       this.dataSource = this.datos;
@@ -75,10 +75,10 @@ export class UsuariosComponent implements OnInit {
     event.preventDefault();
     if (this.userForm.valid) {
       const user = this.userForm.value;
-      console.log(user);
+      //console.loguser);
 
       this.usuariosService.createUser(user).subscribe((response) => {
-        console.log(response);
+        //console.logresponse);
         // this.router.navigate(['./admin/products']);
         this.userForm.reset();
         this.getData();
@@ -111,26 +111,26 @@ export class UsuariosComponent implements OnInit {
     let data = {
       userid: id,
     };
-    console.log(data);
+    //console.logdata);
     
     this.usuariosService.deleteUser(data).subscribe((rpta) => {
       
       this.getData();
       // const index = this.dataSource.findIndex((user) => {
       //   user.ID_USUARIO === parseInt(id);
-      //   console.log( user.ID_USUARIO);
-      //   console.log( id);
+      //   //console.log user.ID_USUARIO);
+      //   //console.log id);
       // });
     
       
-      // console.log(index);
+      // //console.logindex);
       
       // this.dataSource.splice(index, 1);
       // this.dataSource = [...this.dataSource];
     });
   }
   openDialog(row: any) {
-    console.log(row);
+    //console.logrow);
 
     const editModal = this.dialog.open(ModalUsuarioEditComponent, {
       data: row,
@@ -140,7 +140,7 @@ export class UsuariosComponent implements OnInit {
     editModal.afterClosed().subscribe((result) => {
       result
         ? this.getData()
-        : console.log('cancelaste el modal o hubo un error');
+        : //console.log'cancelaste el modal o hubo un error');
     });
   }
 

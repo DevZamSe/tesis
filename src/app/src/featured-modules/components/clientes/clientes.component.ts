@@ -57,7 +57,7 @@ export class ClientesComponent implements OnInit {
   }
   getData(): void {
     this.clientesService.listClients().subscribe((datos) => {
-      console.log(datos);
+      //console.logdatos);
       this.datos = JSON.parse(JSON.stringify(datos))
         .response as Array<ResponseClient>;
       this.dataSource = this.datos;
@@ -67,10 +67,10 @@ export class ClientesComponent implements OnInit {
     event.preventDefault();
     if (this.userForm.valid) {
       const client = this.userForm.value;
-      console.log(client);
+      //console.logclient);
 
       this.clientesService.addClients(client).subscribe((response) => {
-        console.log(response);
+        //console.logresponse);
         // this.router.navigate(['./admin/products']);
         this.userForm.reset();
         this.getData();
@@ -94,10 +94,10 @@ export class ClientesComponent implements OnInit {
     let data = {
       clientid: id,
     };
-    console.log(data);
+    //console.logdata);
 
     this.clientesService.deleteClients(data).subscribe((rpta) => {
-      console.log(rpta);
+      //console.logrpta);
       this.getData();
       // const index = this.dataSource.findIndex((user) => {
       //   user.id_cliente == id;
@@ -107,7 +107,7 @@ export class ClientesComponent implements OnInit {
     });
   }
   openDialog(row: any): void {
-    console.log(row);
+    //console.logrow);
 
     const editModal = this.dialog.open(ModalClientEditComponent, {
       data: row,
@@ -117,7 +117,7 @@ export class ClientesComponent implements OnInit {
     editModal.afterClosed().subscribe((result) => {
       result
         ? this.getData()
-        : console.log('cancelaste el modal o hubo un error');
+        : //console.log'cancelaste el modal o hubo un error');
     });
   }
   exportexcel(): void {

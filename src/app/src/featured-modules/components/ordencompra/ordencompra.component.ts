@@ -37,13 +37,15 @@ export class OrdencompraComponent implements OnInit {
     'OPCIONES',
   ];
   public datos: Array<ResponsePurchase> = [];
- ordenes: any = [];
+  ordenes: any = [];
   public dataSource = this.datos;
 
   public paginator!: MatPaginator;
   public sort!: MatSort;
-  constructor(private purchasesService: PurchasesService,
-    private productsService:ProductsService) {}
+  constructor(
+    private purchasesService: PurchasesService,
+    private productsService: ProductsService
+  ) {}
 
   ngOnInit(): void {
     this.getData();
@@ -57,19 +59,18 @@ export class OrdencompraComponent implements OnInit {
       this.dataSource = this.datos;
     });
   }
-  getProductos(){
-    this.productsService.listProducts().subscribe((datos)=>{
-      this.ordenes=JSON.parse(JSON.stringify(datos)).response;
-
-    })
+  getProductos() {
+    this.productsService.listProducts().subscribe((datos) => {
+      this.ordenes = JSON.parse(JSON.stringify(datos)).response;
+    });
   }
   savePurchase() {
     if (this.userForm.valid) {
       const purchase = this.userForm.value;
-      console.log(purchase);
+      //console.logpurchase);
 
       this.purchasesService.addPurchases(purchase).subscribe((response) => {
-        console.log(response);
+        //console.logresponse);
         // this.router.navigate(['./admin/products']);
         this.getData();
         this.userForm.reset();
@@ -91,13 +92,11 @@ export class OrdencompraComponent implements OnInit {
     let data = {
       productid: id,
     };
-    console.log(data);
+    //console.logdata);
 
     this.purchasesService.deletePurchases(data).subscribe((rpta) => {
-    
-    
-    this.getData();
-      // console.log(rpta);
+      this.getData();
+      // //console.logrpta);
       // const index = this.dataSource.findIndex((orden) => {
       //   orden.ID_PRODUCTO == id;
       // });

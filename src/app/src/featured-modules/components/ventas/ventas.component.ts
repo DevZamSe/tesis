@@ -64,7 +64,7 @@ export class VentasComponent implements OnInit {
   getProducts() {
     this.productsService.listProducts().subscribe((datos) => {
       this.productos = JSON.parse(JSON.stringify(datos)).response;
-      console.log(this.productos);
+      //console.logthis.productos);
     });
   }
   getClientes() {
@@ -86,10 +86,10 @@ export class VentasComponent implements OnInit {
   saveSale() {
     if (this.userForm.valid) {
       const sale = this.userForm.value;
-      console.log(sale);
+      //console.logsale);
 
       this.ventasService.add(sale).subscribe((response) => {
-        console.log(response);
+        //console.logresponse);
         // this.router.navigate(['./admin/products']);
         this.userForm.reset();
         this.getData();
@@ -102,7 +102,7 @@ export class VentasComponent implements OnInit {
     };
     this.ventasService.delete(data).subscribe((rpta) => {
       this.getData();
-      // console.log(rpta);
+      // //console.logrpta);
       // const index = this.dataSource.findIndex((venta) => {
       //   venta.ID_CLIENTE == id;
       // });
