@@ -52,6 +52,8 @@ export class OrdencompraComponent implements OnInit {
 
   getData() {
     this.purchasesService.listPurchases().subscribe((datos) => {
+      console.log(datos);
+      
       this.datos = JSON.parse(JSON.stringify(datos))
         .response as Array<ResponsePurchase>;
       this.dataSource = this.datos;
@@ -59,6 +61,8 @@ export class OrdencompraComponent implements OnInit {
   }
   getProductos(){
     this.productsService.listProducts().subscribe((datos)=>{
+     
+      
       this.ordenes=JSON.parse(JSON.stringify(datos)).response;
 
     })
@@ -89,7 +93,7 @@ export class OrdencompraComponent implements OnInit {
   }
   deleteProduct(id: number) {
     let data = {
-      productid: id,
+      purchaseid: id,
     };
     console.log(data);
 

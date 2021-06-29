@@ -56,6 +56,8 @@ export class VentasComponent implements OnInit {
   }
   getData() {
     this.ventasService.list().subscribe((datos) => {
+      console.log(datos);
+      
       this.datos = JSON.parse(JSON.stringify(datos))
         .response as Array<SalesList>;
       this.dataSource = this.datos;

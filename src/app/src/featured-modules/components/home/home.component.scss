@@ -24,7 +24,7 @@ section {
     padding-left: 1.2rem;
     padding-top: 1rem;
     padding-right: 3rem;
-    background: #ff4081;
+
     color: aliceblue;
     margin-left: 3rem;
     margin-top: 1rem;
@@ -68,4 +68,13 @@ mat-paginator {
 
 ::ng-deep .mat-paginator-range-label {
   display: none !important;
+}
+.color{
+  background-color: yellowgreen;
+}
+.color2{
+  background-color: green;
+}
+.color3{
+  background-color: orange;
 }

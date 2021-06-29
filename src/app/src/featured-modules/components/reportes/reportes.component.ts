@@ -53,7 +53,8 @@ export class ReportesComponent implements OnInit {
     this.ctx = this.canvas.getContext('2d');
 
     let chart = new Chart(this.ctx, {
-      type: 'bar',
+      type: 'horizontalBar',
+      
       data: {
         labels: this.labels,
         datasets: [
@@ -65,12 +66,15 @@ export class ReportesComponent implements OnInit {
             borderWidth: 2,
           },
         ],
+        
       },
       options: {
+        
         title: {
           display: false,
           text: 'First chart',
         },
+        
         tooltips: {
           mode: 'index',
           intersect: true,
