@@ -13,8 +13,8 @@ export const superadmin: Array<permission> = [
 ];
 
 export const admin: Array<permission> = [
-  { id: 0, name: 'Inicio' },
-  { id: 1, name: 'Usuario' },
+  // { id: 0, name: 'Inicio' },
+  // { id: 1, name: 'Usuario' },
   { id: 2, name: 'Clientes' },
   { id: 4, name: 'Predicción' },
   { id: 7, name: 'Producto' },

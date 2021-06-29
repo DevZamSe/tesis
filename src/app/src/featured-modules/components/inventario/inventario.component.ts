@@ -53,10 +53,10 @@ export class InventarioComponent implements OnInit {
     event.preventDefault();
     if (this.userForm.valid) {
       const product = this.userForm.value;
-      console.log(product);
+      //console.logproduct);
 
       this.productsService.addProduct(product).subscribe((response) => {
-        console.log(response);
+        //console.logresponse);
         // this.router.navigate(['./admin/products']);
         this.userForm.reset();
         this.getData();
@@ -74,9 +74,8 @@ export class InventarioComponent implements OnInit {
       productid: id,
     };
     this.productsService.deleteProduct(data).subscribe((rpta) => {
-     
-     this.getData()
-      // console.log(rpta);
+      this.getData();
+      // //console.logrpta);
       // const index = this.dataSource.findIndex((product) => {
       //   product.ID_PRODUCTO == id;
       // });

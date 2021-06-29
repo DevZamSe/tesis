@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
         this.route.navigate([`dashboard`]);
       },
       (error: Error) => {
-        console.log(error);
+        //console.logerror);
         // this.route.navigate([``]);
         window.location.reload;
       }
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
     editModal.afterClosed().subscribe((result) => {
       result
         ? location.reload()
-        : console.log('cancelaste el modal o hubo un error');
+        : //console.log'cancelaste el modal o hubo un error');
     });
   }
 }

@@ -40,9 +40,9 @@ export class HomeComponent implements OnInit {
   getData() {
     this.reportsService.listReport().subscribe((datos) => {
       this.datita = JSON.parse(JSON.stringify(datos));
-      console.log(this.datita);
+      //console.logthis.datita);
       this.dataSource = this.datita.mensual;
-      console.log('tmr', this.dataSource);
+      //console.log'tmr', this.dataSource);
       this.createLineChart();
       this.createLineChart2();
       // this.createLineChart3();

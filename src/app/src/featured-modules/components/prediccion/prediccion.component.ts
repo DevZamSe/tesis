@@ -52,7 +52,7 @@ export class PrediccionComponent implements OnInit {
     this.ctx = this.canvas.getContext('2d');
 
     let chart = new Chart(this.ctx, {
-      type: 'bar',
+      type: 'line',
       data: {
         labels: this.labels,
         datasets: [
