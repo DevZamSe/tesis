@@ -61,7 +61,6 @@ export class OrdencompraComponent implements OnInit {
       this.dataSource = this.datos;
     });
   }
-<<<<<<< HEAD
   getProductos(){
     this.productsService.listProducts().subscribe((datos)=>{
      
@@ -69,12 +68,6 @@ export class OrdencompraComponent implements OnInit {
       this.ordenes=JSON.parse(JSON.stringify(datos)).response;
 
     })
-=======
-  getProductos() {
-    this.productsService.listProducts().subscribe((datos) => {
-      this.ordenes = JSON.parse(JSON.stringify(datos)).response;
-    });
->>>>>>> fe85e109fc9539c188141b14b6dcdcd5b8aed52d
   }
   savePurchase() {
     if (this.userForm.valid) {

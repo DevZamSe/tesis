@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
     editModal.afterClosed().subscribe((result) => {
       result
         ? location.reload()
-        : //console.log'cancelaste el modal o hubo un error');
+        : console.log('cancelaste el modal o hubo un error')
     });
   }
 }

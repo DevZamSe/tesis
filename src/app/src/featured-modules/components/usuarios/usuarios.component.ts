@@ -140,7 +140,7 @@ export class UsuariosComponent implements OnInit {
     editModal.afterClosed().subscribe((result) => {
       result
         ? this.getData()
-        : //console.log'cancelaste el modal o hubo un error');
+        : console.log('cancelaste el modal o hubo un error')
     });
   }
 
