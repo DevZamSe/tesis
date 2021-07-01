@@ -24,9 +24,9 @@ export class HomeComponent implements OnInit {
   public labels: Array<string> = ChartData;
   public canvas: any;
   public ctx: any;
-  public compras: number = 0;
-  public ventas: number = 0;
   public ganancia: string = '';
+  public ventas: string = '';
+  public compras: string = '';
 
   public paginator!: MatPaginator;
   public sort!: MatSort;
@@ -40,7 +40,10 @@ export class HomeComponent implements OnInit {
   getData() {
     this.reportsService.listReport().subscribe((datos) => {
       this.datita = JSON.parse(JSON.stringify(datos));
-      //console.logthis.datita);
+      this.ganancia = this.datita.mensual[6].dinero_ventas;
+      this.ventas = this.datita.mensual[6].ventas;
+      this.compras = this.datita.mensual[6].compras;
+
       this.dataSource = this.datita.mensual;
       //console.log'tmr', this.dataSource);
       this.createLineChart();
@@ -159,7 +162,6 @@ export class HomeComponent implements OnInit {
     var data: Array<number> = [];
     for (let index = 0; index < this.dataSource.length; index++) {
       data.push(this.dataSource[index].dinero_ventas);
-      this.ganancia = this.ventas + this.dataSource[index].dinero_ventas;
     }
     return data;
   }
@@ -168,7 +170,6 @@ export class HomeComponent implements OnInit {
     var data: Array<number> = [];
     for (let index = 0; index < this.dataSource.length; index++) {
       data.push(this.dataSource[index].ventas);
-      this.ventas = this.ventas + this.dataSource[index].ventas;
     }
     return data;
   }
@@ -177,7 +178,6 @@ export class HomeComponent implements OnInit {
     var data: Array<number> = [];
     for (let index = 0; index < this.dataSource.length; index++) {
       data.push(this.dataSource[index].compras);
-      this.compras = this.compras + this.dataSource[index].compras;
     }
     return data;
   }
