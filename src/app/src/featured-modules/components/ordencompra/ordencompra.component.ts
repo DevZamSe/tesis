@@ -37,7 +37,8 @@ export class OrdencompraComponent implements OnInit {
     'OPCIONES',
   ];
   public datos: Array<ResponsePurchase> = [];
-  ordenes: any = [];
+  public ordenes: any = [];
+  public modelId: any = [];
   public dataSource = this.datos;
 
   public paginator!: MatPaginator;
@@ -54,36 +55,29 @@ export class OrdencompraComponent implements OnInit {
 
   getData() {
     this.purchasesService.listPurchases().subscribe((datos) => {
-      console.log(datos);
-      
+      console.log('get data ', datos);
+
       this.datos = JSON.parse(JSON.stringify(datos))
         .response as Array<ResponsePurchase>;
       this.dataSource = this.datos;
     });
   }
-  getProductos(){
-    this.productsService.listProducts().subscribe((datos)=>{
-     
-      
-      this.ordenes=JSON.parse(JSON.stringify(datos)).response;
-
-    })
+  getProductos() {
+    this.productsService.listProducts().subscribe((datos) => {
+      this.ordenes = JSON.parse(JSON.stringify(datos)).response;
+      console.log('la orden es ', this.ordenes);
+    });
   }
   savePurchase() {
     if (this.userForm.valid) {
       const purchase = this.userForm.value;
-      //console.logpurchase);
-
       this.purchasesService.addPurchases(purchase).subscribe((response) => {
-        //console.logresponse);
-        // this.router.navigate(['./admin/products']);
         this.getData();
         this.userForm.reset();
       });
     }
   }
   public applyFilter(): void {
-    // this.dataSource.includes(this.nameFilter.toLowerCase());
     this.dataSource = this.datos.filter(
       (i) =>
         i.PROVEEDOR.toString().includes(this.nameFilter) ||
@@ -97,16 +91,9 @@ export class OrdencompraComponent implements OnInit {
     let data = {
       purchaseid: id,
     };
-    //console.logdata);
 
     this.purchasesService.deletePurchases(data).subscribe((rpta) => {
       this.getData();
-      // //console.logrpta);
-      // const index = this.dataSource.findIndex((orden) => {
-      //   orden.ID_PRODUCTO == id;
-      // });
-      // this.dataSource.splice(index, 1);
-      // this.dataSource = [...this.dataSource];
     });
   }
 
