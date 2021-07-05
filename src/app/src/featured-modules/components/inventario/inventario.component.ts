@@ -66,7 +66,7 @@ export class InventarioComponent implements OnInit {
   public applyFilter(): void {
     // this.dataSource.includes(this.nameFilter.toLowerCase());
     this.dataSource = this.datos.filter((i) =>
-      i.NOMBRE_PRODUCTO.toString().includes(this.nameFilter)
+      i.NOMBRE_PRODUCTO.toLowerCase().includes(this.nameFilter.toLocaleLowerCase())
     );
   }
   deleteProduct(id: number) {

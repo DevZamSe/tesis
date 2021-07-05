@@ -82,12 +82,12 @@ export class ClientesComponent implements OnInit {
     this.dataSource = this.datos.filter(
       (i) =>
         i.NOMBRE.toLowerCase().includes(this.nameFilter.toLocaleLowerCase()) ||
-        i.APELLIDO.toString().includes(this.nameFilter.toLocaleLowerCase()) ||
-        i.SEXO.toString().includes(this.nameFilter.toLocaleLowerCase()) ||
-        i.DIRECCION.toString().includes(this.nameFilter.toLocaleLowerCase()) ||
-        i.DISTRITO.toString().includes(this.nameFilter.toLocaleLowerCase()) ||
-        i.TELEFONO.toString().includes(this.nameFilter.toLocaleLowerCase()) ||
-        i.EMAIL.toString().includes(this.nameFilter.toLocaleLowerCase())
+        i.APELLIDO.toLowerCase().includes(this.nameFilter.toLocaleLowerCase()) ||
+        i.SEXO.toLowerCase().includes(this.nameFilter.toLocaleLowerCase()) ||
+        i.DIRECCION.toLowerCase().includes(this.nameFilter.toLocaleLowerCase()) ||
+        i.DISTRITO.toLowerCase().includes(this.nameFilter.toLocaleLowerCase()) ||
+        i.TELEFONO.toLowerCase().includes(this.nameFilter.toLocaleLowerCase()) ||
+        i.EMAIL.toLowerCase().includes(this.nameFilter.toLocaleLowerCase())
     );
   }
   deleteUser(id: number): void {
