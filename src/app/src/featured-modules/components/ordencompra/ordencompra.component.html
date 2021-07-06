@@ -18,13 +18,15 @@
           </mat-card-header>
           <mat-card-content class="Formcontent">
             <mat-form-field appearance="fill">
-              <mat-label>Modelo ID</mat-label>
-              <input
-                placeholder="Modelo ID"
-                formControlName="modeloid"
-                matInput
-                type="number"
-              />
+              <mat-label>Modelo</mat-label>
+              <mat-select formControlName="modeloid">
+                <mat-option
+                  *ngFor="let item of datos1"
+                  [value]="item.ID_RESULTADO_MODELO"
+                >
+                  {{ item.NOMBRE }}
+                </mat-option>
+              </mat-select>
             </mat-form-field>
 
             <!-- <mat-form-field appearance="fill">

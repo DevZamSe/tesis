@@ -13,6 +13,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { ExportExcelPipe } from 'src/app/src/shared/pipes/exportExcel/export-excel.pipe';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { PredictionsService } from 'src/app/src/shared/services/predictions/predictions.service';
+import { PredictionList } from 'src/app/src/shared/interfaces/predictions';
 @Component({
   selector: 'app-ordencompra',
   templateUrl: './ordencompra.component.html',
@@ -39,13 +41,15 @@ export class OrdencompraComponent implements OnInit {
   public datos: Array<ResponsePurchase> = [];
   public ordenes: any = [];
   public modelId: any = [];
+  public datos1: any = [];
   public dataSource = this.datos;
 
   public paginator!: MatPaginator;
   public sort!: MatSort;
   constructor(
     private purchasesService: PurchasesService,
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private authPrediction: PredictionsService
   ) {}
 
   ngOnInit(): void {
@@ -61,6 +65,14 @@ export class OrdencompraComponent implements OnInit {
         .response as Array<ResponsePurchase>;
       this.dataSource = this.datos;
     });
+    this.authPrediction.list().subscribe(
+      (datos) => {
+        this.datos1 = JSON.parse(JSON.stringify(datos))
+          .response as Array<PredictionList>;
+        console.log(this.datos1);
+      },
+      (error) => {}
+    );
   }
   getProductos() {
     this.productsService.listProducts().subscribe((datos) => {
